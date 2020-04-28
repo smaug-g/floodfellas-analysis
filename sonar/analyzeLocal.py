@@ -12,11 +12,18 @@ with open('temp_vals.pkl', 'rb') as f:
     saved_temps = pickle.load(f)
     f.close()
 
-    
-date_nums = saved_data[0]
-sensor_values = np.array(saved_data[1])
-temp_values = np.array(saved_temps[1])
+with open('sensor_vals.pkl', 'wb') as f:
+    pickle.dump(saved_data, f, protocol=2)
+    f.close()
 
-matplotlib.pyplot.plot_date(date_nums, sensor_values)
-matplotlib.pyplot.plot_date(date_nums, temp_values)
-matplotlib.pyplot.show()
+with open('temp_vals.pkl', 'wb') as f:
+    pickle.dump(saved_temps, f, protocol=2)
+    f.close()
+    
+#date_nums = saved_data[0]
+#sensor_values = np.array(saved_data[1])
+#temp_values = np.array(saved_temps[1])
+#
+#matplotlib.pyplot.plot_date(date_nums, sensor_values)
+#matplotlib.pyplot.plot_date(date_nums, temp_values)
+#matplotlib.pyplot.show()
